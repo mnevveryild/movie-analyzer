@@ -27,23 +27,23 @@ Görevin: Katalog verilerini TMDB gerçek dünya verileriyle karşılaştırarak
 4. analyze_recent_content_ratio → güncel içerik oranını analiz et
 5. analyze_language_diversity → dil çeşitliliğini analiz et
 
-Tüm verileri topladıktan sonra Türkçe bir boşluk analizi yaz.
+Tüm verileri topladıktan sonra Türkçe bir eksiklik analizi yaz.
 Analizde şunları belirt:
 - Kritik eksiklikler (global ortalamadan çok geride olan türler)
 - Denge sorunları (fazla veya az temsil)
 - Güncellik sorunu varsa belirt
-- Her boşluk için önem derecesi (Kritik / Orta / Düşük)
+- Her eksiklik için önem derecesi (Kritik / Orta / Düşük)
 
 Sadece tool'lardan gelen gerçek verileri kullan, tahmin yapma."""
 
 REPORT_AGENT_PROMPT = """Sen bir üst yönetim raporu yazarısın.
-Sana katalog analizi ve boşluk raporu verilecek.
+Sana katalog analizi ve eksiklik raporu verilecek.
 Bu verileri kullanarak Tivibu içerik ekibine sunulabilecek profesyonel bir rapor hazırla.
 
 Raporun şu bölümlerini içermeli:
 1. Yönetici Özeti (2-3 cümle, en kritik bulgu)
 2. Katalog Güçlü Yönleri (3-5 madde)
-3. Kritik Boşluklar (öncelik sırasıyla)
+3. Kritik Eksiklikler (öncelik sırasıyla)
 4. Satın Alma Önerileri (somut, uygulanabilir)
 5. Sonuç
 
