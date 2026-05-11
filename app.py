@@ -22,9 +22,9 @@ except ModuleNotFoundError as e:
 
 st.set_page_config(
     page_title="Tivibu · Katalog Analiz",
-    page_icon="📺",
+    page_icon="",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="expanded", 
 )
 
 def apply_tivibu_theme():
@@ -161,7 +161,7 @@ def apply_tivibu_theme():
     }
 
     [data-testid="stTabs"] [role="tab"][aria-selected="true"] {
-        background: #FFD700 !important;
+        background: #ccff00 !important;
         color: #08192b !important;
         font-weight: 700 !important;
     }
@@ -179,7 +179,7 @@ def apply_tivibu_theme():
 
     /* ── BUTTONS ── */
     .stButton > button {
-        background: #FFD700 !important;
+        background: #ccff00 !important;
         color: #08192b !important;
         border: none !important;
         border-radius: 10px !important;
@@ -188,13 +188,13 @@ def apply_tivibu_theme():
         letter-spacing: 0.3px !important;
         padding: 12px 28px !important;
         transition: all 0.2s ease !important;
-        box-shadow: 0 4px 14px rgba(255,215,0,0.3) !important;
+        box-shadow: 0 4px 14px #ccff00 !important;
     }
 
     .stButton > button:hover {
-        background: #e6c200 !important;
+        background: #ccff00 !important;
         transform: translateY(-1px) !important;
-        box-shadow: 0 6px 20px rgba(255,215,0,0.45) !important;
+        box-shadow: 0 6px 20px #ccff00 !important;
     }
 
     .stButton > button:active {
@@ -215,7 +215,7 @@ def apply_tivibu_theme():
 
     [data-testid="stExpander"] summary {
         font-weight: 600 !important;
-        color: #ffffff !important;
+        color: #0d2237 !important;
         padding: 14px 18px !important;
     }
 
@@ -241,7 +241,7 @@ def apply_tivibu_theme():
     }
 
     div[data-testid="stAlert"].element-container > div[class*="stWarning"] {
-        background: rgba(255,215,0,0.08) !important;
+        background: #ccff00 !important;
         border-color: #FFD700 !important;
     }
 
@@ -269,18 +269,18 @@ def apply_tivibu_theme():
 
     /* ── DOWNLOAD BUTTON ── */
     [data-testid="stDownloadButton"] > button {
-        background: #FFD700 !important;
+        background: #ccff00 !important;
         border: none !important;
         color: #08192b !important;
         border-radius: 9px !important;
         font-weight: 800 !important;
-        box-shadow: 0 4px 14px rgba(255,215,0,0.3) !important;
+        box-shadow: 0 4px 14px #ccff00 !important;
     }
 
     [data-testid="stDownloadButton"] > button:hover {
-        background: #e6c200 !important;
+        background: #ccff00 !important;
         transform: translateY(-1px) !important;
-        box-shadow: 0 6px 20px rgba(255,215,0,0.45) !important;
+        box-shadow: 0 6px 20px #ccff00 !important;
     }
 
     /* ── DIVIDER ── */
@@ -295,14 +295,14 @@ def apply_tivibu_theme():
     }
 
     p, li, .stMarkdown {
-        color: #c0d8ee !important;
+        color: #ffffff !important;
     }
 
     /* ── INFO BOX ── */
     .stInfo {
         background: rgba(0,222,255,0.06) !important;
         border-left: 3px solid #00deff !important;
-        color: #ffffff !important;
+        color: #0d2237 !important;
     }
 
     /* ── SEVERITY BADGE helpers ── */
@@ -322,9 +322,9 @@ def apply_tivibu_theme():
 
     .badge-orta {
         display: inline-block;
-        background: rgba(255,215,0,0.12);
+        background: #ccff00;
         color: #FFD700;
-        border: 1px solid rgba(255,215,0,0.3);
+        border: 1px solid #ccff00;
         border-radius: 6px;
         padding: 2px 10px;
         font-size: 0.75rem;
@@ -398,12 +398,12 @@ def apply_tivibu_theme():
     """, unsafe_allow_html=True)
 
 
-ORANGE = colors.HexColor("#FF6600")
+ORANGE = colors.HexColor("#ccff00")
 DARK_BG = colors.HexColor("#111627")
 DARK_TEXT = colors.HexColor("#1a1a2e")
 GREY_TEXT = colors.HexColor("#555555")
 RED_COLOR = colors.HexColor("#ef4444")
-YELLOW_COLOR = colors.HexColor("#f59e0b")
+YELLOW_COLOR = colors.HexColor("#def50b")
 GREEN_COLOR = colors.HexColor("#22c55e")
 
 
@@ -467,7 +467,7 @@ def build_pdf_report(catalog_summary, gap_report, final_report) -> bytes:
     # orange accent line
     story.append(HRFlowable(width=W, thickness=3, color=ORANGE, spaceAfter=0.6 * cm))
 
-    sub_data = [["Multi-agent yapay zeka · TMDB 5000 film kataloğu analizi"]]
+    sub_data = [["AI Destekli Katalog Analiz Asistanı tarafından hazırlanmıştır"]]
     sub_table = Table(sub_data, colWidths=[W])
     sub_table.setStyle(TableStyle([
         ("FONTNAME", (0, 0), (-1, -1), "Helvetica"),
@@ -687,7 +687,7 @@ def build_pdf_report(catalog_summary, gap_report, final_report) -> bytes:
     story.append(Spacer(1, 1 * cm))
     story.append(HRFlowable(width=W, thickness=2, color=ORANGE))
     story.append(Spacer(1, 0.2 * cm))
-    footer_data = [["Tivibu Katalog Analiz Asistanı  ·  Multi-agent AI Sistemi"]]
+    footer_data = [["Tivibu Katalog Analiz Asistanı"]]
     ft = Table(footer_data, colWidths=[W])
     ft.setStyle(TableStyle([
         ("FONTNAME", (0, 0), (-1, -1), "Helvetica"),
@@ -708,84 +708,45 @@ def severity_badge(severity: str) -> str:
 
 apply_tivibu_theme()
 
-# ── SIDEBAR ──────────────────────────────────────────────────────
-with st.sidebar:
-    st.markdown("""
-    <div style="display:flex;align-items:center;gap:10px;padding:10px 0 20px">
-        <div style="background:#00deff;border-radius:8px;padding:6px 10px;font-size:1.2rem">📺</div>
-        <div>
-            <div style="font-size:1rem;font-weight:800;color:#fff;letter-spacing:1px">TİVİBU</div>
-            <div style="font-size:0.68rem;color:#5580a0;letter-spacing:2px;text-transform:uppercase">Katalog Asistanı</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("---")
-
-    provider = getattr(Config, "LLM_PROVIDER", "Bilinmiyor").upper()
-    st.markdown(f"""
-    <div style="background:rgba(0,222,255,0.06);border:1px solid rgba(0,222,255,0.2);border-radius:9px;padding:10px 14px;margin-bottom:16px">
-        <div style="font-size:0.7rem;color:#5580a0;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px">Aktif LLM</div>
-        <div style="font-size:0.95rem;font-weight:700;color:#00deff">{provider}</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("**Nasıl çalışır?**", help="3 aşamalı multi-agent pipeline")
-    st.markdown("""
-    <div style="margin-top:8px">
-        <div class="step-item">
-            <div class="step-num">1</div>
-            <div class="step-text"><strong>Katalog Agent</strong>İstatistikleri toplar ve özetler</div>
-        </div>
-        <div class="step-item">
-            <div class="step-num">2</div>
-            <div class="step-text"><strong>Gap Agent</strong>Eksiklikleri ve boşlukları tespit eder</div>
-        </div>
-        <div class="step-item" style="border:none">
-            <div class="step-num">3</div>
-            <div class="step-text"><strong>Rapor Agent</strong>Yönetici raporu ve öneriler üretir</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
 
 # ── MAIN HEADER ──────────────────────────────────────────────────
 st.markdown("""
 <div class="tivibu-header">
-    <div class="tivibu-logo-badge" style="background:#00deff;color:#000000;border-radius:8px;padding:6px 10px;font-size:1.2rem">t</div>
+    <div class="tivibu-logo-badge" style="background:#00deff;color:#000000;border-radius:8px;padding:6px 10px;font-size:1.7rem;font-weight:bold">t</div>
     <div class="tivibu-title-block">
         <h1>Tivibu <span>Katalog Analiz</span> Asistanı</h1>
-        <p>Multi-agent yapay zeka · Katalog eksikliği ve satın alma önerileri</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 # ── START BUTTON ──────────────────────────────────────────────────
-col_btn, col_info = st.columns([1, 3])
+col_btn, col_info = st.columns([1, 3], vertical_alignment="center")
+
 with col_btn:
-    start = st.button("▶  Analizi Başlat", use_container_width=True)
+    start = st.button("Analizi Başlat", use_container_width=True)
+
 with col_info:
+    # Padding'e artık gerek yok, daha temiz bir HTML kullanabilirsiniz
     st.markdown("""
-    <div style="padding:12px 0;color:#5580a0;font-size:0.84rem">
-        TMDB 5000 film kataloğu üzerinde otomatik analiz çalıştırır.
+    <div style="color:#5580a0;font-size:0.84rem">
         Ortalama süre <strong style="color:#c0d8ee">30–60 saniye</strong>.
     </div>
     """, unsafe_allow_html=True)
-
 # ── ANALYSIS ─────────────────────────────────────────────────────
 if start:
     try:
-        with st.status("⚙️  Analiz çalışıyor...", expanded=True) as status:
-            st.write("🔍 Katalog Agent başlatılıyor...")
+        with st.status("  Analiz çalışıyor...", expanded=True) as status:
+            
             catalog_summary, gap_report, final_report = analyze_catalog(None)
-            status.update(label="✅  Analiz tamamlandı!", state="complete")
+            status.update(label=" Analiz tamamlandı!", state="complete")
 
         st.success("Analiz başarıyla tamamlandı!")
 
         tab1, tab2, tab3, tab4 = st.tabs([
-            "📊  Katalog Özeti",
-            "🔍  Eksiklik Analizi",
-            "💡  Öneriler & Rapor",
-            "🗃️  Ham Veri",
+            "  Katalog Özeti",
+            "  Eksiklik Analizi",
+            "  Öneriler & Rapor",
+            "  Dosya İndir (PDF)",
         ])
 
         # ── TAB 1: CATALOG SUMMARY ────────────────────────────────
@@ -828,7 +789,7 @@ if start:
                 if hasattr(gap_report, "overrepresented_genres") and gap_report.overrepresented_genres:
                     genres_str = " · ".join(gap_report.overrepresented_genres)
                     st.markdown(f"""
-                    <div style="background:rgba(255,215,0,0.07);border:1px solid rgba(255,215,0,0.25);border-radius:12px;padding:16px 18px">
+                    <div style="background:#ccff00;border:1px solid #ccff00 ;border-radius:12px;padding:16px 18px">
                         <div style="font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#FFD700;margin-bottom:6px">◉ Fazla Temsil Edilen Türler</div>
                         <div style="color:#ffffff;font-size:0.9rem">{genres_str}</div>
                     </div>
@@ -869,7 +830,7 @@ if start:
             r1, r2 = st.columns(2)
             with r1:
                 st.markdown("""
-                <div style="font-size:0.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#00deff;margin-bottom:10px">
+                <div style="font-size:0.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#c;margin-bottom:10px">
                 ✓ Katalog Güçlü Yönleri</div>
                 """, unsafe_allow_html=True)
                 if hasattr(final_report, "catalog_highlights"):
@@ -915,7 +876,7 @@ if start:
         with tab4:
             st.subheader("PDF Raporu")
             st.markdown("""
-            <div style="background:rgba(0,222,255,0.06);border:1px solid rgba(0,222,255,0.2);border-radius:12px;padding:16px 20px;margin-bottom:20px">
+            <div style="background:#ccff00;border:1px solid rgba(0,222,255,0.2);border-radius:12px;padding:16px 20px;margin-bottom:20px">
                 <div style="font-size:0.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#00deff;margin-bottom:6px">📄 PDF Rapor</div>
                 <div style="color:#c0d8ee;font-size:0.88rem;line-height:1.6">
                     Katalog özeti, eksiklik analizi ve satın alma önerilerini içeren tam raporu PDF olarak indirebilirsiniz.
@@ -957,10 +918,10 @@ if start:
                 <div style="background:#0d2237;border:1px solid rgba(0,222,255,0.1);border-radius:10px;padding:12px 16px">
                     <div style="color:#00deff;font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Rapor Özeti</div>
                     <div style="color:#c0d8ee;font-size:0.85rem;line-height:2">
-                        🎬 {getattr(catalog_summary, 'total_movies', 0):,} film analiz edildi<br>
-                        📂 {genre_count} tür kategorisi<br>
-                        🔍 {gap_count} eksiklik tespit edildi<br>
-                        💡 {rec_count} satın alma önerisi
+                         {getattr(catalog_summary, 'total_movies', 0):,} film analiz edildi<br>
+                         {genre_count} tür kategorisi<br>
+                         {gap_count} eksiklik tespit edildi<br>
+                         {rec_count} satın alma önerisi
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
